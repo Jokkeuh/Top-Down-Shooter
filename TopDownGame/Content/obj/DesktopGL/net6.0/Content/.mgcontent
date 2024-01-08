@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/../../../../../Downloads/imgs/ReloadingAnimationSniper.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/animationSheetRevolverShot.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/beer.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/Blastwave.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/BlastWaveStatic.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/bullet.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/defaultAura.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/demonSlimeBoss.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/DemonSlimeSheet.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/Dodge.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/DodgeAnimation.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/EnemyNew.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/EnemyNewv2.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/ExplosionRadiusAnimationV2.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/fancyMachineGunBulletAnimation.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/fancyRevolverBulletAnimation.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/fancyShotgunBulletAnimation.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/fancySniperBulletAnimation.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/fonts/DamageFont.spritefont</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/fonts/DodgeAnimation.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/GunPlayer.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/hero.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/HorFence.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/Idle.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/IdleAnimationMachineGun.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/IdleAnimationRevolver.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/IdleAnimationShotgun.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/IdleAnimationSniper.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/machineGunBlast.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/mechaStoneBossV2.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/pistol.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/PlayerAlt.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/ReloadingAnimationMachineGun.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/ReloadingAnimationRevolver.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/ReloadingAnimationShotgun.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/ReloadingAnimationSniper.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/ReloadingAnimationSniperV2.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/RevolverBlast.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/RocketAnimation.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/SandTile.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/ShotgunBlast.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/SimpleFire.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/slimeTest.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/SniperBullet.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/SniperShootingAnimation.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/SniperShotAnimation.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/tile0.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/tile1.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/tile2.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/tile3.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/tile4.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/VertFence.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File>ReloadingAnimationSniper.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

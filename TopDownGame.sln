@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopDownGame", "TopDownGame\TopDownGame.csproj", "{4AAC37FC-CA20-4381-A7A9-08155426A108}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AAC37FC-CA20-4381-A7A9-08155426A108}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AAC37FC-CA20-4381-A7A9-08155426A108}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AAC37FC-CA20-4381-A7A9-08155426A108}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AAC37FC-CA20-4381-A7A9-08155426A108}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1697972A-86F7-4EBB-B1C2-FCD348BA017D}
+	EndGlobalSection
+EndGlobal
