@@ -18,6 +18,7 @@ namespace TopDownGame.Models
         public Weapon WeaponSS { get; set; } = new SixShooter();
         public Weapon Blastwave { get; set; } = new Blastwave();
         public Weapon RocketLauncher { get; set; } = new RocketLauncer();
+        public Weapon OPGUN { get; set; } = new OPGUN();
         public Aura aura { get; set; }
 
 
@@ -43,11 +44,12 @@ namespace TopDownGame.Models
         public int Score { get; set; }
         public bool Immune { get; set; } = false;
         public float CoolDownImmune { get; set; } = 0.25f;
+        private Map Map { get; set; }
 
         public int CopyHP { get; set; }
 
 
-        public Player(Texture2D texture, Vector2 pos) : base(texture, pos)
+        public Player(Texture2D texture, Vector2 pos, Map map) : base(texture, pos)
         {
             
 
@@ -58,7 +60,7 @@ namespace TopDownGame.Models
 
             Weapon = WeaponSG;
             PlayerHealth = 10;
-
+            this.Map = map;
 
             var heroTexture = Globals.Content.Load<Texture2D>("hero");
             var dodgeTexture = Globals.Content.Load<Texture2D>("DodgeAnimation");
@@ -155,49 +157,91 @@ namespace TopDownGame.Models
             {
                 Weapon = Blastwave;
             }
-
+            if (InputManager.numpad9)
+            {
+                Weapon = OPGUN;
+            }
         }
+        //public void Dodge()
+        //{
+        //    Dodging = true;
+        //    DodgeCooldown = 0.1f;
+        //    Position += InputManager.velocity * Speed * Globals.TotalSeconds * 50f;
+        //}
         public void Dodge()
         {
             Dodging = true;
             DodgeCooldown = 0.1f;
-            Position += InputManager.velocity * Speed * Globals.TotalSeconds * 50f;
+
+            Vector2 nextPosition = Position + InputManager.velocity * Speed * Globals.TotalSeconds * 50f;
+
+            if (nextPosition.X >= 0 && nextPosition.X <= Map.MAP_SIZE.X * Map.TILE_SIZE.X &&
+                nextPosition.Y >= 0 && nextPosition.Y <= Map.MAP_SIZE.Y * Map.TILE_SIZE.Y)
+            {
+                Position = nextPosition;
+            }
+            else
+            {
+                return;
+            }
         }
 
 
-
-        public void Update(Map map)
+        public void Update()
         {
 
             if (CoolDownImmune <= 0)
             {
                 this.Immune = false;
-                CoolDownImmune = 0.1f;
+                CoolDownImmune = 0.2f;
 
             }
             if (Immune)
             {
+                
                 CoolDownImmune -= Globals.TotalSeconds;
-                PlayerHealth = CopyHP;
+                
             }
             
 
 
 
-            if (PlayerHealth == 0)
+            if (PlayerHealth < 0)
             {
                 //ResetGame();
                 PlayerHealth = 10;
                 Score = 0;
-                Position = new(300, 300);
+                Position = new((Map.MAP_SIZE.X * Map.TILE_SIZE.X)/2, (Map.MAP_SIZE.Y* Map.TILE_SIZE.Y) / 2);
             }
 
+            ;
+            
             Vector2 nextPosition = Position + InputManager.velocity * Speed * Globals.TotalSeconds;
-            int nextTileX = (int)(nextPosition.X / map.TILE_SIZE.X);
-            int nextTileY = (int)(nextPosition.Y / map.TILE_SIZE.Y);
-            bool isNextTileWalkable = map.IsWalkable(nextTileX, nextTileY);
+            int nextTileX = (int)(nextPosition.X / Map.TILE_SIZE.X);
+            int nextTileY = (int)(nextPosition.Y / Map.TILE_SIZE.Y);
+            bool isNextTileWalkable = Map.IsWalkable(nextTileX, nextTileY);
             if (isNextTileWalkable)
             {
+                //Position = new Vector2(
+                //MathHelper.Clamp(Position.X, 0, Map.MAP_SIZE.X * Map.TILE_SIZE.X),
+                //MathHelper.Clamp(Position.Y, 0, Map.MAP_SIZE.Y * Map.TILE_SIZE.Y));
+                if (nextPosition.X < 0) 
+                {
+                    Position.X = Map.MAP_SIZE.X * Map.TILE_SIZE.X;
+                }
+                else if (nextPosition.X > Map.MAP_SIZE.X * Map.TILE_SIZE.X - 10)
+                {
+                    Position.X = 0;
+                }
+                if (nextPosition.Y < 0)
+                {
+                    Position.Y = Map.MAP_SIZE.Y * Map.TILE_SIZE.Y;
+                }
+                else if (nextPosition.Y > Map.MAP_SIZE.Y * Map.TILE_SIZE.Y - 10)
+                {
+                    Position.Y = 0;
+                }
+
                 //Position = nextPosition;
                 if (InputManager.Moving)
                 {
@@ -228,7 +272,6 @@ namespace TopDownGame.Models
             if (Weapon.GetType() == typeof(MachineGun))
             {
                 _animationManagerReloading.Update("IdleMachineGun");
-                
             }
                 
 
@@ -374,6 +417,16 @@ namespace TopDownGame.Models
                     Shooting = true;
                     Weapon.Fire(this);
                 }
+                if (Weapon is OPGUN)
+                {
+                    _animationManagerWeapon.StartAnimation("MachineGunBlast");
+                    _animationManagerWeapon.Update("MachineGunBlast");
+
+                    animTime = 0.12f;
+                    Shooting = true;
+                    Weapon.Fire(this);
+                }
+
                 if (Weapon is SixShooter)
                 {
                     _animationManagerWeapon.StartAnimation("RevolverBlast");
@@ -419,6 +472,7 @@ namespace TopDownGame.Models
                 || InputManager.numpad3
                 || InputManager.numpad4
                 || InputManager.numpad5
+                || InputManager.numpad9
                 || InputManager.Fkey
                 )
             {

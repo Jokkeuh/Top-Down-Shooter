@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TopDownGame.Models;
 
 namespace TopDownGame
 {
@@ -15,6 +16,7 @@ namespace TopDownGame
         public static ContentManager Content { get; set; }
         public static SpriteBatch SpriteBatch { get; set; }
         public static SpriteFont font { get; set; }
+        
         public static void Update(GameTime time)
         {
             TotalSeconds = (float)time.ElapsedGameTime.TotalSeconds;

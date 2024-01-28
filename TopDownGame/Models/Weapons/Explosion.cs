@@ -11,32 +11,37 @@ namespace TopDownGame.Models.Weapons
 {
     public class Explosion
     {
-        private readonly AnimationManager animationManager;
+        public AnimationManager animationManager { get; set; }
         private readonly Texture2D texture;
-
+        private Guid AnimationId;
         public Vector2 Positition { get; set; }
-        public Explosion(Vector2 Pos)
+        public Vector2 HitPositition { get; set; } = Vector2.Zero;
+
+        public Explosion(AnimationManager animationManager)
         {
-            texture ??= Globals.Content.Load<Texture2D>("ExplosionRadiusAnimationV2");
-            
-            animationManager = new AnimationManager();
-            animationManager.AddAnimation("explode", new(texture, 1, 8, 0.02f));
-            Positition = Pos;
+            this.animationManager = animationManager;
+            texture ??= Globals.Content.Load<Texture2D>("exp2");
+            AnimationId = Guid.NewGuid();
+            animationManager.AddAnimation($"explode{AnimationId}", new(texture, 4, 4, 0.08f,grid:true, scale: 2));
+
         }
 
         public void Update()
         {
-            animationManager.Update("explode");
+            animationManager.Update($"explode{AnimationId}");
         }
 
-        public void Explode()
+        public void Explode(Vector2 hitpos)
         {
-            animationManager.StartAnimation("explode");
+            animationManager.StartAnimation($"explode{AnimationId}");
+            HitPositition = hitpos;
+            
+
         }
 
         public void Draw()
         {
-            animationManager.Draw(Positition, 0);
+            animationManager.Draw(HitPositition, 0);
         }
 
     }

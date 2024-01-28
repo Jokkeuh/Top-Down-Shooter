@@ -15,12 +15,7 @@ namespace TopDownGame.Models
         public int Speed { get; set; }
         public bool Explosive { get; set; } = false;
         public bool IsEnemyProjectile { get; set; } = false;
-
-        //public void Update()
-        //{
-
-        //    LifeSpan -= Globals.TotalSeconds;
-        //}
+        public int Dmg { get; set; } = 0;
 
     }
 }

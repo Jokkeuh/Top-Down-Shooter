@@ -17,12 +17,15 @@ namespace TopDownGame.Managers
         public static List<Projectile> Projectiles { get; } = new();
         public static List<Explosion> explosions { get; } = new();
         public static int critDamage;
-        
+        public static float DurationOfAnimation = 0.21f; //testing
+        public static float explosionTiming;
+
+
         static Random random = new Random();
         public static void Init(Texture2D _texture)
         {
             texture = _texture;
-          
+            explosionTiming = DurationOfAnimation;
         }
 
         public static void AddProjectiles(ProjectileData data, Texture2D texture)
@@ -52,8 +55,9 @@ namespace TopDownGame.Managers
                         {
                             if (bullet.explodingAmmo)
                             {
-                                bullet.Explode();
-                                bullet.Destroy();
+
+                                bullet.ExplodeAtCurrentPosition(bullet.Position);
+                                
                             }
                             else
                             {
@@ -66,25 +70,12 @@ namespace TopDownGame.Managers
                                     b2.TakeDamage(player.Weapon.Damage, false, player);
                                 }
 
+                               
                                 targetsHit++;
                                 if (targetsHit > player.Weapon.Penetration)
                                 {
-                                    if (bullet.explodingAmmo)
-                                    {
-                                        bullet.Explode();
-                                        bullet.Destroy();
-
-                                    }
-                                    else
-                                    {
-                                        bullet.Destroy();
-                                    }
-
-
-
-
-                                    break;
-                                }
+                                    bullet.Destroy();   
+                                 }
                             }
                         }
 
@@ -93,8 +84,8 @@ namespace TopDownGame.Managers
                         float distanceToEnemy = Vector2.Distance(bullet.Position, b2.Position);
                         if (bullet.explodingState)
                         {
-
-                            float radius = 150f;
+                            
+                            float radius = 150f; //EXPLOSION RADIUS
 
                             // needed as prop
                             if (distanceToEnemy < radius)
@@ -103,12 +94,24 @@ namespace TopDownGame.Managers
                                 float distanceFactor = 1.0f - (distanceToEnemy / radius);
                                 float proximityDamage = player.Weapon.Damage * distanceFactor;
                                 b2.TakeDamage((int)proximityDamage, false, player);
+                                bullet.Velocity = Vector2.Zero;
+                                
+                                
                             }
 
                         }
 
                     }
-                }else bullet.Update(player);
+                    } else if (bullet.IsEnemyProjectile) 
+                    {
+                    bullet.Update(player);
+                    if ((bullet.Position - player.Position).Length() < 32)
+                        {
+                            player.PlayerHealth -= bullet.Dmg;
+                            bullet.Destroy();
+                        }
+                    }
+                
 
             }
             
@@ -118,9 +121,12 @@ namespace TopDownGame.Managers
 
         public static void Draw(Player player)
         {
+            
             foreach(var bullet in Projectiles)
             {
-                bullet.Draw();
+                
+                    bullet.Draw();
+
             }
         }
     }

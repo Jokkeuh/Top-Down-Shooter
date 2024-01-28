@@ -45,6 +45,7 @@ namespace TopDownGame.Models
                 Rotation = (float)Math.Atan2(Direction.Y, Direction.X),
                 Explosive = false,
                 IsEnemyProjectile = true,
+                Dmg = 1,
             };
             ProjectileManager.AddProjectiles(pd, texture);
 
@@ -86,7 +87,7 @@ namespace TopDownGame.Models
             }
             player.CopyHP = player.PlayerHealth;
             player.PlayerHealth -= 1;
-            player.Immune = true;
+            
         }
         public override void Update(Player player)
         {

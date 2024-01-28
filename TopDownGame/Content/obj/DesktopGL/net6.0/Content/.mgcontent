@@ -17,6 +17,7 @@
     <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/DodgeAnimation.png</File>
     <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/EnemyNew.png</File>
     <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/EnemyNewv2.png</File>
+    <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/exp2.png</File>
     <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/ExplosionRadiusAnimationV2.png</File>
     <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/fancyMachineGunBulletAnimation.png</File>
     <File>C:/Users/Joren/source/repos/TopDownGame/TopDownGame/Content/fancyRevolverBulletAnimation.png</File>
@@ -59,6 +60,7 @@
   </SourceFiles>
   <DestFiles>
     <File>ReloadingAnimationSniper.png</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

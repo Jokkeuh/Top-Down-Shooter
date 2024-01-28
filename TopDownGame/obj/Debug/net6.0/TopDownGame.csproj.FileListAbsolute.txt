@@ -74,3 +74,10 @@ C:\Users\Joren\source\repos\TopDownGame\TopDownGame\bin\Debug\net6.0\Content\Hor
 C:\Users\Joren\source\repos\TopDownGame\TopDownGame\bin\Debug\net6.0\Content\VertFence.xnb
 C:\Users\Joren\source\repos\TopDownGame\TopDownGame\bin\Debug\net6.0\Content\RocketAnimation.xnb
 C:\Users\Joren\source\repos\TopDownGame\TopDownGame\bin\Debug\net6.0\Content\ExplosionRadiusAnimationV2.xnb
+C:\Users\Joren\source\repos\TopDownGame\TopDownGame\bin\Debug\net6.0\Content\exp2.xnb
+C:\Users\Joren\source\repos\TopDownGame\TopDownGame\bin\Debug\net6.0\Autofac.dll
+C:\Users\Joren\source\repos\TopDownGame\TopDownGame\bin\Debug\net6.0\MonoGame.Extended.dll
+C:\Users\Joren\source\repos\TopDownGame\TopDownGame\bin\Debug\net6.0\MonoGame.Extended.Animations.dll
+C:\Users\Joren\source\repos\TopDownGame\TopDownGame\bin\Debug\net6.0\MonoGame.Extended.Graphics.dll
+C:\Users\Joren\source\repos\TopDownGame\TopDownGame\bin\Debug\net6.0\MonoGame.Extended.Tiled.dll
+C:\Users\Joren\source\repos\TopDownGame\TopDownGame\bin\Debug\net6.0\Newtonsoft.Json.dll

@@ -20,28 +20,41 @@ namespace TopDownGame.Models
         private bool active = true;
         private int framesX;
         private int framesY;
-        
-        
+        private float scale;
 
-        public Animation(Texture2D texture, int framesXaxis, int framesYaxis, float frameTime,int row = 1)
+
+        public Animation(Texture2D texture, int framesXaxis, int framesYaxis, float frameTime, int row = 1, bool grid = false, float scale = 1)
         {
-            
-                this.texture = texture;
-                this.frameTime = frameTime;
-                frames = framesYaxis > framesXaxis ? framesYaxis : framesXaxis;
 
+            this.texture = texture;
+            this.frameTime = frameTime;
+            frames = framesYaxis > framesXaxis ? framesYaxis : framesXaxis;
+            this.scale = scale;
 
-                var framewidth = texture.Width / framesXaxis;
-                var frameHeight = texture.Height / framesYaxis;
-                framesX = framesXaxis;
-                framesY = framesYaxis;
-
+            var framewidth = texture.Width / framesXaxis;
+            var frameHeight = texture.Height / framesYaxis;
+            framesX = framesXaxis;
+            framesY = framesYaxis;
+            if (!grid)
+            {
                 for (int i = 0; i < frames; i++)
                 {
                     sourceRectangle.Add(new(i * framewidth, (row - 1) * frameHeight, framewidth, frameHeight));
                 }
+            }
+            else if(grid)
+            {
+                for (int i = 0; i < frames; i++)
+                {
+                    for (int j = 0; j < frames; j++)
+                    {
+                        sourceRectangle.Add(new(j * framewidth,i * frameHeight, framewidth, frameHeight));
+                    }
+                }
+            }
             
-            
+
+
         }
         public bool IsFinished()
         {
@@ -65,27 +78,27 @@ namespace TopDownGame.Models
         public void Update()
         {
             if (!active) return;
-            
+
             frameTimeLeft -= Globals.TotalSeconds;
-            
+
             if (frameTimeLeft <= 0)
             {
                 frameTimeLeft += frameTime;
                 frame = (frame + 1) % frames;
-                
+
             }
-            
+
         }
         public void Draw(Vector2 pos, float rotation = 0, bool flipped = false)
         {
             if (flipped)
             {
-                Globals.SpriteBatch.Draw(texture, pos, sourceRectangle[frame], Color.White, rotation, new(texture.Width / (2 * framesX), texture.Height / (2 * framesY)), Vector2.One, SpriteEffects.FlipVertically, 1);
-                                                                                                                                                                                                  //.FlipHor
+                Globals.SpriteBatch.Draw(texture, pos, sourceRectangle[frame], Color.White, rotation, new(texture.Width / (2 * framesX), texture.Height / (2 * framesY)), Vector2.One * scale, SpriteEffects.FlipVertically, 1);
+                //.FlipHor
             }
             else
             {
-                Globals.SpriteBatch.Draw(texture, pos, sourceRectangle[frame], Color.White, rotation, new(texture.Width / (2 * framesX), texture.Height / (2 * framesY)), Vector2.One, SpriteEffects.None, 1);
+                Globals.SpriteBatch.Draw(texture, pos, sourceRectangle[frame], Color.White, rotation, new(texture.Width / (2 * framesX), texture.Height / (2 * framesY)), Vector2.One * scale, SpriteEffects.None, 1);
 
             }
 

@@ -28,21 +28,21 @@ namespace TopDownGame.Managers
             enemies = new List<Enemy>();
         }
 
-        public static void AddEnemy(Player player, Texture2D texture, int EnemyNumber)
+        public static void AddEnemy(Player player, Texture2D texture, int EnemyNumber, int currentWave)
         {
 
 
             if (EnemyNumber == 1)
             {
-                enemies.Add(new Enemy1(texture, RandomPos(player), 300));
+                enemies.Add(new Enemy1(texture, RandomPos(player), 10 * currentWave));
             }
             if (EnemyNumber == 2)
             {
-                enemies.Add(new Enemy2(texture, RandomPos(player),200));
+                enemies.Add(new Enemy2(texture, RandomPos(player),15 * currentWave));
             }
             if (EnemyNumber == 3)
             {
-                enemies.Add(new Enemy3(texture, RandomPos(player), 100));
+                enemies.Add(new Enemy3(texture, RandomPos(player), 25 * currentWave));
             }
 
 
@@ -58,9 +58,9 @@ namespace TopDownGame.Managers
             if (interval <= 0)
             {
                 interval += cooldown;
-                if (player.Score < 100)  AddEnemy(player, Globals.Content.Load<Texture2D>("DemonSlimeSheet"), 1);
-                if (player.Score > 100)  AddEnemy(player, Globals.Content.Load<Texture2D>("mechaStoneBossV2"), 2);
-                if (player.Score > 200)  AddEnemy(player, Globals.Content.Load<Texture2D>("mechaStoneBossV2"), 3);
+                if (player.Score < 100)  AddEnemy(player, Globals.Content.Load<Texture2D>("DemonSlimeSheet"), 1, 1);
+                if (player.Score > 10)  AddEnemy(player, Globals.Content.Load<Texture2D>("mechaStoneBossV2"), 2, 2);
+                if (player.Score > 10)  AddEnemy(player, Globals.Content.Load<Texture2D>("mechaStoneBossV2"), 3, 5);
             }
             
 

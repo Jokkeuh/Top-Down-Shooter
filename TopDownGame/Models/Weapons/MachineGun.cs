@@ -27,7 +27,7 @@ namespace TopDownGame.Models.Weapons
                 Speed = 650,
                 LifeSpan = 2f,
                 Rotation = player.Rotation,
-                Explosive = true,
+                Explosive = false,
             };
             ProjectileManager.AddProjectiles(pd, texture);
         }

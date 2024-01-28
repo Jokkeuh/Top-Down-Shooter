@@ -8,7 +8,7 @@ namespace TopDownGame.Managers
     public class GameManager
     {
         private readonly Player player;
-        private readonly Map map = new Map();
+        public Map map = new();
         
         
         public Matrix cameraTranslation;
@@ -20,7 +20,7 @@ namespace TopDownGame.Managers
             ProjectileManager.Init(bulletTexture);
             UIManager.Init(bulletTexture);
             
-            player = new(Globals.Content.Load<Texture2D>("pistol"), new(300,300));
+            player = new(Globals.Content.Load<Texture2D>("pistol"), new(300,300), map);
         }    
 
         private void CalculateTranslation()
@@ -42,7 +42,7 @@ namespace TopDownGame.Managers
         public void Update()
         {
             InputManager.Update(cameraTranslation);
-            player.Update(map);
+            player.Update();
             CalculateTranslation();
             
            

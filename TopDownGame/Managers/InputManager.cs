@@ -25,6 +25,7 @@ namespace TopDownGame.Managers
         public static bool numpad3 { get; private set; }
         public static bool numpad4 { get; private set; }
         public static bool numpad5 { get; private set; }
+        public static bool numpad9 { get; private set; }
         public static bool Fkey { get; private set; }   
         public static bool ShiftKey { get; private set; }
         public static bool Space { get; internal set; }
@@ -60,6 +61,7 @@ namespace TopDownGame.Managers
             numpad3 = lastKeyboardState.IsKeyUp(Keys.NumPad3) && keyState.IsKeyDown(Keys.NumPad3);
             numpad4 = lastKeyboardState.IsKeyUp(Keys.NumPad4) && keyState.IsKeyDown(Keys.NumPad4);
             numpad5 = lastKeyboardState.IsKeyUp(Keys.NumPad5) && keyState.IsKeyDown(Keys.NumPad5);
+            numpad9 = lastKeyboardState.IsKeyUp(Keys.NumPad9) && keyState.IsKeyDown(Keys.NumPad9);
             Fkey = lastKeyboardState.IsKeyUp(Keys.F) && keyState.IsKeyDown(Keys.F);
             ShiftKey = lastKeyboardState.IsKeyUp(Keys.LeftShift) && keyState.IsKeyDown(Keys.LeftShift);
             Space = lastKeyboardState.IsKeyUp(Keys.Space) && keyState.IsKeyDown(Keys.Space);

@@ -8,31 +8,27 @@ using TopDownGame.Managers;
 
 namespace TopDownGame.Models.Weapons
 {
-    public class SixShooter : Weapon
+    public class OPGUN : Weapon
     {
         private Texture2D texture = Globals.Content.Load<Texture2D>("bullet");
-
-        public SixShooter() 
+        public OPGUN() 
         {
             cooldown = 0.1f;
-            maxAmmo = 6;
-            Ammo = 5;
-            reloadTime = 1.3f;
-            Penetration = 0;
-            Damage = 25;
+            maxAmmo = 999;
+            Ammo = maxAmmo;
+            reloadTime = 1f;
+            Damage = 0;
         }
-
         protected override void CreateProjectile(Player player)
         {
             ProjectileData pd = new()
             {
                 Position = player.Position,
-                Rotation = player.Rotation,
+                Speed = 650,
                 LifeSpan = 2f,
-                Speed = 1000,
+                Rotation = player.Rotation,
                 Explosive = true,
             };
-
             ProjectileManager.AddProjectiles(pd, texture);
         }
     }

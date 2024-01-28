@@ -14,43 +14,40 @@ namespace TopDownGame.Models
     public class Projectile : Sprites
     {
         public Vector2 Velocity { get; set; }
+        public Vector2 BulletPosition { get; set; }
         public AnimationManager AnimationManagerProjectiles = new();
+        private Guid animationID {  get; set; }
         public ProjectileData data;
         public bool explodingState {get; set; } = false;
         public bool explodingAmmo { get; set; } = false;
         public bool IsEnemyProjectile { get; set; } = false;
-        
-       
-        public float LifeSpan { get; private set; }
+        public int Dmg { get; set; } = 0;
+        public Explosion Explosion { get; set; }
+
+
+        public float LifeSpan { get; set; }
         public Projectile(Texture2D texture, ProjectileData data) : base(texture, data.Position)
-        { //ANIMATIONS FOR ALL AMMOS
+        {
+            animationID = Guid.NewGuid();
+            //ANIMATIONS FOR ALL AMMOS
             var animationRevolver = Globals.Content.Load<Texture2D>("fancyRevolverBulletAnimation");
             var animationShotgun = Globals.Content.Load<Texture2D>("fancyShotgunBulletAnimation");
             var animationSniper = Globals.Content.Load<Texture2D>("fancySniperBulletAnimation");
             var animationMachineGun = Globals.Content.Load<Texture2D>("fancyMachineGunBulletAnimation");
             var animationRocket = Globals.Content.Load<Texture2D>("RocketAnimation");
 
-
-            var ExplosionAnimation = Globals.Content.Load<Texture2D>("ExplosionRadiusAnimationV2");
-            
-
             
 
 
 
 
-
-
-
-
+            
 
             AnimationManagerProjectiles.AddAnimation("RevolverBullet", new(animationRevolver, 4, 1, 0.08f));
             AnimationManagerProjectiles.AddAnimation("ShotgunBullet", new(animationShotgun, 4, 1, 0.08f));
             AnimationManagerProjectiles.AddAnimation("SniperBullet", new(animationSniper, 4, 1, 0.08f));
             AnimationManagerProjectiles.AddAnimation("MachineGunBullet", new(animationMachineGun, 4, 1, 0.08f));
             AnimationManagerProjectiles.AddAnimation("rocket", new(animationRocket, 3, 1, 0.08f));
-            AnimationManagerProjectiles.AddAnimation("explode", new(ExplosionAnimation, 1, 8, 0.031f));
-
 
 
 
@@ -61,29 +58,40 @@ namespace TopDownGame.Models
             LifeSpan = data.LifeSpan;
             explodingAmmo = data.Explosive;
             IsEnemyProjectile = data.IsEnemyProjectile;
-        }
-        public void Destroy()
-        {
-               
-                LifeSpan = 0;
+            Dmg = data.Dmg;
+            Explosion = new Explosion(AnimationManagerProjectiles);
+
             
+
         }
 
-        
+        private float explosionTimer = 0.36f;
+
+        public void Destroy()
+        {   
+                LifeSpan = 0;   
+        }
+
+        public Vector2 GetCurrentPos()
+        {
+            return Position;
+        }
 
         public void Update(Player player)
         {
-            
 
+            //AnimationManagerProjectiles.Update("explode");
             Position += Velocity * Speed * Globals.TotalSeconds;
             LifeSpan -= Globals.TotalSeconds;
             if (explodingState)
             {
-                AnimationManagerProjectiles.Update("explode");
-                
-                if (LifeSpan <= 0) // timing for animation on explosion
+                AnimationManagerProjectiles.Update($"explode{animationID}");
+
+                explosionTimer -= Globals.TotalSeconds;
+                if (explosionTimer <= 0)
                 {
-                   explodingState = false;
+                    explodingState = false;
+                    explosionTimer = 0.21f; // Reset the timer
                     
                 }
             }
@@ -116,19 +124,19 @@ namespace TopDownGame.Models
 
                     }
                     
-                    if (data.Explosive && !explodingState)
+                    if (data.Explosive)
                     {
                             AnimationManagerProjectiles.Update("rocket");
                     }
 
                 }
-                if (LifeSpan <= 0.025 && data.Explosive)
+                
+                if (LifeSpan <= 0.16 && data.Explosive && !explodingState)
                 {
-
-                    Explode();
-                    AnimationManagerProjectiles.StartAnimation("explode");
                     
-
+                    ExplodeAtCurrentPosition(Position);
+                    Velocity = Vector2.Zero;
+                    
                 }
 
 
@@ -138,21 +146,21 @@ namespace TopDownGame.Models
             
 
         }
-
-        public void Explode()
+        
+        public void ExplodeAtCurrentPosition(Vector2 pos)
         {
-            if (explodingState) return;
-            
-            Velocity = Vector2.Zero;
+
+            Explosion.Explode(pos);
+            LifeSpan = 0.10f;
             this.explodingState = true;
+            
         }
 
         public override void Draw()
         {
             AnimationManagerProjectiles.Draw(Position, Rotation);
-            
-            
-            
+            Explosion.Draw();
+            //expl.Draw();
             //Globals.SpriteBatch.Draw(Texture, Position, null, Color.White, Rotation, new(Texture.Width / 2, Texture.Height / 2), 1f, SpriteEffects.None, 1f);
         }
 

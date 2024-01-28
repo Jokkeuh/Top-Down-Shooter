@@ -29,6 +29,7 @@ namespace TopDownGame.Models.Weapons
                 LifeSpan = 1f,
                 Rotation = player.Rotation,
                 Explosive = true,
+                
             };
             ProjectileManager.AddProjectiles(pd, texture);
             
